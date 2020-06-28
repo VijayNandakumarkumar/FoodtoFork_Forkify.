@@ -3,7 +3,7 @@ export const getInput = () => elements.searchInput.value;
 const renderRecipe = (recipe) => {
     const markUp = `
     <li>
-        <a class="results__link results__link--active" href="${
+        <a class="results__link results__link--active" href="#${
           recipe.recipe_id
         }">
             <figure class="results__fig">
