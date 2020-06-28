@@ -32,7 +32,7 @@ const renderRecipe = (recipe) => {
     elements.searchResList.insertAdjacentHTML("beforeend", markUp);
 };
 
-const limitTitle = (title, limit = 17) => {
+export const limitTitle = (title, limit = 17) => {
     if (title.length > limit) {
         const newTitle = [];
         title.split(" ").reduce((acc, cur) => {
