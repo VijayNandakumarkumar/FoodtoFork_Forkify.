@@ -1,5 +1,16 @@
 import { elements } from "./base";
 export const getInput = () => elements.searchInput.value;
+
+export const highlightSelected = (id) => {
+    const resultsArr = Array.from(document.querySelectorAll(".results__link"));
+    resultsArr.forEach((el) => {
+        el.classList.remove("results__link--active");
+    });
+    document
+        .querySelector(`.results__link[href*="${id}"]`)
+        .classList.add("results__link--active");
+};
+
 const renderRecipe = (recipe) => {
     const markUp = `
     <li>
@@ -7,7 +18,7 @@ const renderRecipe = (recipe) => {
           recipe.recipe_id
         }">
             <figure class="results__fig">
-                <img src="${recipe.imgage_url}" alt="${limitTitle(
+                <img src="${recipe.image_url}" alt="${limitTitle(
     recipe.title
   )}">
             </figure>

@@ -23,11 +23,11 @@ export default class Recipe {
 
     calcTime() {
         // 15 minute for 3 ingredients.
-        const time = Math.ceil(this.ingredients.length / 3) * 15;
+        this.time = Math.ceil(this.ingredients.length / 3) * 15;
     }
 
     calcServings() {
-        const servings = 4;
+        this.servings = 4;
     }
 
     parseIngredients() {
@@ -105,5 +105,17 @@ export default class Recipe {
             return objIng;
         });
         this.ingredients = newIngredients;
+    }
+
+    updateServings(type) {
+        // Servings
+        const newServings = type === "dec" ? this.servings - 1 : this.servings + 1;
+
+        // Ingredients
+        this.ingredients.forEach((ing) => {
+            ing.count *= newServings / this.servings;
+        });
+
+        this.servings = newServings;
     }
 }
